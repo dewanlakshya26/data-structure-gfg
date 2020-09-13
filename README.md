@@ -1,2 +1,2 @@
 # data-structure-gfg
-https://github.com/dewanlakshya26/data-structure-gfg
+Hamming distance between two arrays or strings of equal length is the number of positions at which the corresponding character(elements) are different.
