@@ -1,0 +1,65 @@
+package com.booking.movieProcessor;
+
+import java.util.*;
+
+class SortPrimeANdNonPrime {
+    int numberOfRecords = 6;
+    int records[] = {4, 3, 2, 6, 100, 17};
+    List<Integer> primeList = new ArrayList<>();
+    List<Integer> nonPrimeList = new ArrayList<>();
+
+    public static void main(String[] args) {
+        SortPrimeANdNonPrime s = new SortPrimeANdNonPrime();
+        s.calculatePrimeOrNot(s.primeList, s.nonPrimeList, s.records);
+        Comparator c = Collections.reverseOrder();
+        Collections.sort(s.primeList);
+        Collections.sort(s.nonPrimeList, c);
+        System.out.println(s.primeList.toString());
+        System.out.println(s.nonPrimeList.toString());
+        s.assignValuyesToPositions(s.records, s.primeList, s.nonPrimeList);
+        System.out.println(Arrays.toString(s.records));
+    }
+
+    private void assignValuyesToPositions(int[] records, List<Integer> primeList, List<Integer> nonPrimeList) {
+        int primeCount = 0;
+        int nonPrimeCount = 0;
+        for (int i = 0; i < records.length; i++) {
+            if (checkPrime(records[i])) {
+                records[i] = primeList.get(primeCount);
+                primeCount++;
+            } else {
+                records[i] = nonPrimeList.get(nonPrimeCount);
+                nonPrimeCount++;
+            }
+        }
+    }
+
+
+    void calculatePrimeOrNot(List<Integer> primeList, List<Integer> nonPrimeList, int[] records) {
+        for (int i = 0; i < records.length; i++) {
+            if (checkPrime(records[i])) {
+                primeList.add(records[i]);
+            } else
+                nonPrimeList.add(records[i]);
+        }
+
+    }
+
+    private boolean checkPrime(int inputNumber) {
+        boolean isItPrime = true;
+        if (inputNumber <= 1) {
+            isItPrime = false;
+            return isItPrime;
+        } else {
+            for (int i = 2; i <= inputNumber / 2; i++) {
+                if ((inputNumber % i) == 0) {
+                    isItPrime = false;
+
+                    break;
+                }
+            }
+
+            return isItPrime;
+        }
+    }
+}
