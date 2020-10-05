@@ -7,11 +7,11 @@ public class MissingNoIntegerArray {
 
     public static void main(String[] args) {
 
-        int[] arra = new int[]{-3, -8, 2, 3, 4, 1, 2, 3, 8, 9};
+        int[] arra = new int[]{-3, -8, 2, 3, 4, 1, 2, 3, 1, 15};
         int[] register = new int[arra.length];
 
         for (int i : arra) {
-            if (i > 0) {
+            if (i > 0  && i < register.length) {
                 register[i] = 1;
             }
         }
